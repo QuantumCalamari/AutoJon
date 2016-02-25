@@ -1,0 +1,27 @@
+AutoJob:
+
+- trawl jobsites every day for jobs
+	- check jobs by scraping indeed and S1
+		- run searches "physics" "c++" "junior software" "java"
+	- searches for certain terms (c++, junior, software)
+	- ranks by appropriateness
+	- removes any that have certain words (eg. "senior" "teacher")
+
+- create a job profile
+		- list the job profile, where the application can be found, the date it was applied to
+		- assign a number
+
+- create application
+	- creates CV
+		- matches search terms to prepared CV terms
+	- creates cover letter
+		- matches search terms to prepared paragraphs
+
+- once application is complete, it emails with a message
+	- "Hi! This application has been submitted by a bot.  I matched your listing to Jon's requirements.  We hope to hear from you soon.
+
+	   Regards,
+		
+	   Jon and AutoJon
+
+	   If there are problems with this bot you can help by providing feedback about what went wrong"
