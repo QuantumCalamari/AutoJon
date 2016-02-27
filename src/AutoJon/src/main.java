@@ -8,7 +8,7 @@ import org.jsoup.select.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
+import AutoJon.src.mathFunctions;
 import AutoJon.src.trawl;
 
 public class main {
@@ -23,6 +23,13 @@ public class main {
 			
 			ArrayList<String> urlStore = new ArrayList<String>();
 			ArrayList<String> jobStore = new ArrayList<String>();
+			
+			ArrayList<String> jobScore = new ArrayList<String>();
+			ArrayList<String> searchTerms = new ArrayList<String>();
+			
+			searchTerms.add("C++");
+			searchTerms.add("Junior Software");
+			searchTerms.add("Java");
 			
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart");
@@ -50,7 +57,7 @@ public class main {
 						linkString = link.attr("href");
 		               	String linkInnerH = link.html();
 		            	
-		               	add = trawl.searchString(linkInnerH, linkString);
+		               	add = trawl.searchString(linkInnerH, linkString, searchTerms);
 		               	
 		               	if (add) {
 		               		jobStore.add(linkString);
@@ -80,19 +87,21 @@ public class main {
 			System.out.println(set.size());
 			System.out.println(jobStore.size());
 			
+			mathFunctions.hash(jobStore.get(0));
+			
 			if (set.size() < jobStore.size()) {
 				jobStore.clear();
 				jobStore.addAll(set);
 			}
 			
 			for (int i = 0; i < jobStore.size(); i++) {
-				System.out.println("www.s1jobs.com" + jobStore.get(i));
+				//System.out.println("www.s1jobs.com" + jobStore.get(i));
 			}
 			
 			//now I need to take this data and search each url
 			
 			for (int i = 0; i < jobStore.size(); i++) {
-				trawl.pullJob(jobStore.get(i));
+				trawl.pullJob(jobStore.get(i), jobScore, searchTerms);
 			}
 					
 		} catch (IOException e) {

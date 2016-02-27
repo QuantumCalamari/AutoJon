@@ -3,9 +3,10 @@ AutoJob:
 - trawl jobsites every day for jobs
 	- check jobs by scraping indeed and S1
 		- run searches "physics" "c++" "junior software" "java"
+		- I need to account for multiple pages
 	- searches for certain terms (c++, junior, software)
 	- ranks by appropriateness
-	- removes any that have certain words (eg. "senior" "teacher")
+	- removes any that have certain words (eg. "senior" "teacher") } instead this should be reflected in appropriateness
 
 - create a job profile
 		- list the job profile, where the application can be found, the date it was applied to
