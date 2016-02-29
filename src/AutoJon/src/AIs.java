@@ -2,7 +2,7 @@ package AutoJon.src;
 
 public class AIs {
 
-	public static String letterGen(String name, boolean nbool, String jRef, boolean jRefbool, String title, boolean cs, boolean cpp, boolean java, String site, boolean compBool, String company) {
+	public static String letterGen(String name, boolean nbool, String jRef, boolean jRefbool, String title, boolean wd, boolean cs, boolean cpp, boolean java, String site, boolean compBool, String company) {
 		String letter, att, intro, p1, p2, p3, conc, sig;
 		
 		intro = "";
@@ -54,13 +54,26 @@ public class AIs {
 					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
 			p3 = "For development I work mostly with Java and C++, though I also have an interest in game development where I use C# for writing "
 					+ "animation scripts in Unity.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
-
+		} else if (wd) {
+			//need to change this to a web dev paragraph
+			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
+					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
+					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
+					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
+			p3 = "For development I work mostly with Java and C++, though I also have an interest in game development where I use C# for writing "
+					+ "animation scripts in Unity.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
 		}
 		
 		if (!compBool) {
-		conc = "Your client would benefit from my unique background, my knowledge in research and problem solving in addition to my proven track record across several disciplines. My excellent academic record and desire to grow within this role ensure that I would be a positive addition to your client's team. If you have any additional questions or require any further documentation, I am available to be contacted through phone or email. \n\n";
+		conc = "Your client would benefit from my unique background, my knowledge in research and problem solving in addition to my proven track record "
+				+ "across several disciplines. My excellent academic record and desire to grow within this role ensure that I would be a positive "
+				+ "addition to your client's team. If you have any additional questions or require any further documentation, I am available to be"
+				+ " contacted through phone or email. \n\n";
 		} else {
-			conc = company + " would benefit from my unique background, my knowledge in research and problem solving in addition to my proven track record across several disciplines. My excellent academic record and desire to grow within this role ensure that I would be a positive addition to your client's team. If you have any additional questions or require any further documentation, I am available to be contacted through phone or email. \n\n";
+			conc = company + " would benefit from my unique background, my knowledge in research and problem solving in addition to my proven track record "
+					+ "across several disciplines. My excellent academic record and desire to grow within this role ensure that I would be a positive "
+					+ "addition to your client's team. If you have any additional questions or require any further documentation, I am available to be"
+					+ " contacted through phone or email. \n\n";
 			
 		}
 		
@@ -76,7 +89,7 @@ public class AIs {
 		String email, main, sig;
 		
 		if (!nbool) {
-			name = "Dear Recruiter,\n\n";
+			name = "Dear Recruiter";
 		}
 		
 		if (jRefbool) {
@@ -87,7 +100,7 @@ public class AIs {
 		
 		sig = "Regards\n\nJon Collins, and AutoJon";
 		
-		email = name + main + sig;
+		email = name + ",\n\n" + main + sig;
 		
 		return email;
 	}

@@ -12,23 +12,23 @@ import AutoJon.src.*;
 
 public class main {
 
-	public static void main(String[] args) {
-		
-		
-		
-		
-		
+	public static void main(String[] args) {	
+			
 		try {
+			
+			String site = "S1 Jobs";
+			String thisCL = "";
 			
 			ArrayList<String> urlStore = new ArrayList<String>();
 			ArrayList<String> jobStore = new ArrayList<String>();
-			
-			ArrayList<String> jobScore = new ArrayList<String>();
 			ArrayList<String> searchTerms = new ArrayList<String>();
+			ArrayList<String> CL = new ArrayList<String>();
 			
 			searchTerms.add("C++");
-			searchTerms.add("Junior Software");
 			searchTerms.add("Java");
+			searchTerms.add("Web Development");
+			searchTerms.add("C#");
+			searchTerms.add("Junior Software");
 			
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart");
@@ -37,45 +37,30 @@ public class main {
 			
 			for (int i = 0; i < urlStore.size(); i++) {
 				
-				//System.out.println();
-				//System.out.println(urlStore.get(i));
-				//System.out.println();
-				
 				boolean add;
 				
-//				jobStore.add("Physics Teacher");
-//				jobStore.add("Senior Programmer");
-				
 				org.jsoup.nodes.Document doc = Jsoup.connect(urlStore.get(i)).get();
-				//org.jsoup.nodes.Document doc = Jsoup.connect("http://www.google.be").get();
 				Elements links = doc.select("a[href]");
 				
 				String linkString = "";
 				
 				for (Element link : links) {
-		            	
+					
 						linkString = link.attr("href");
 		               	String linkInnerH = link.html();
 		            	
 		               	add = trawl.searchString(linkInnerH, linkString, searchTerms);
 		               	
+		               	if (i < 4) {
+							site = "http://www.s1jobs.com";
+						} else if (i < 5) {
+							site = "http://www.indeed.com";
+						}
+		               	
 		               	if (add) {
-		               		jobStore.add(linkString);
+		               		jobStore.add(site + linkString);
 		               	}
-		               	
-		              // 	for (int j = 0; j < jobStore.size(); j++) {
-		               	
-		               //		System.out.println(linkInnerH);
-		               		           	
-		              // 	}
 		            	
-		               	
-		            	if (linkInnerH.contains("Software")) {
-		            		System.out.println(linkInnerH);
-		            		System.out.println("www.s1jobs.com" + linkString);
-		            		jobStore.add("www.s1jobs.com" + linkString);
-		            		//System.out.println();
-		            	}
 		        	}
 				
 				System.out.println(jobStore.size());
@@ -85,26 +70,25 @@ public class main {
 			
 			Set<String> set = new HashSet<String>(jobStore);
 
-			//System.out.println(set.size());
-			//System.out.println(jobStore.size());
-			
-			//mathFunctions.hash(jobStore.get(0));
-			
 			if (set.size() < jobStore.size()) {
 				jobStore.clear();
 				jobStore.addAll(set);
 			}
 			
-			for (int i = 0; i < jobStore.size(); i++) {
-				//System.out.println("www.s1jobs.com" + jobStore.get(i));
-			}
-			
 			//now I need to take this data and search each url
 			
 			for (int i = 0; i < jobStore.size(); i++) {
-				//trawl.pullJob(jobStore.get(i), jobScore, searchTerms);
+				//System.out.println(jobStore.get(i));
+				//search every url in the list
+				org.jsoup.nodes.Document doc = Jsoup.connect(jobStore.get(i)).get();
+				thisCL = search.ranking(doc, searchTerms, site);
+				CL.add(thisCL);
 			}
-				
+			
+			//take output of search.ranking and generate cover letter with it
+			
+			
+			
 			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", true, true, true, "S1 Jobs", false, "none"));
 			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, true, true, "S1 Jobs", false, "none"));
 			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, false, true, "S1 Jobs", false, "none"));
@@ -112,10 +96,17 @@ public class main {
 			
 			//how to send email
 			//http://www.tutorialspoint.com/java/java_sending_email.htm
+			for (int i = 0; i < CL.size(); i++) {
+				//System.out.println(CL.get(i));
+				//put this in an output file
+			}
 			
+			//do the emailing
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 		
 	}	
 }
