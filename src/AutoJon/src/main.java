@@ -8,8 +8,7 @@ import org.jsoup.select.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import AutoJon.src.mathFunctions;
-import AutoJon.src.trawl;
+import AutoJon.src.*;
 
 public class main {
 
@@ -48,6 +47,7 @@ public class main {
 //				jobStore.add("Senior Programmer");
 				
 				org.jsoup.nodes.Document doc = Jsoup.connect(urlStore.get(i)).get();
+				//org.jsoup.nodes.Document doc = Jsoup.connect("http://www.google.be").get();
 				Elements links = doc.select("a[href]");
 				
 				String linkString = "";
@@ -68,13 +68,14 @@ public class main {
 		               //		System.out.println(linkInnerH);
 		               		           	
 		              // 	}
-		            	/*
+		            	
+		               	
 		            	if (linkInnerH.contains("Software")) {
 		            		System.out.println(linkInnerH);
 		            		System.out.println("www.s1jobs.com" + linkString);
 		            		jobStore.add("www.s1jobs.com" + linkString);
 		            		//System.out.println();
-		            	}*/
+		            	}
 		        	}
 				
 				System.out.println(jobStore.size());
@@ -84,10 +85,10 @@ public class main {
 			
 			Set<String> set = new HashSet<String>(jobStore);
 
-			System.out.println(set.size());
-			System.out.println(jobStore.size());
+			//System.out.println(set.size());
+			//System.out.println(jobStore.size());
 			
-			mathFunctions.hash(jobStore.get(0));
+			//mathFunctions.hash(jobStore.get(0));
 			
 			if (set.size() < jobStore.size()) {
 				jobStore.clear();
@@ -101,9 +102,17 @@ public class main {
 			//now I need to take this data and search each url
 			
 			for (int i = 0; i < jobStore.size(); i++) {
-				trawl.pullJob(jobStore.get(i), jobScore, searchTerms);
+				//trawl.pullJob(jobStore.get(i), jobScore, searchTerms);
 			}
-					
+				
+			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", true, true, true, "S1 Jobs", false, "none"));
+			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, true, true, "S1 Jobs", false, "none"));
+			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, false, true, "S1 Jobs", false, "none"));
+			//System.out.println(AIs.emailGen("none", false, "1234", true, "Lead Astronaut"));
+			
+			//how to send email
+			//http://www.tutorialspoint.com/java/java_sending_email.htm
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
