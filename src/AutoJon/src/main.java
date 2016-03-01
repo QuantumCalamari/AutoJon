@@ -33,7 +33,7 @@ public class main {
 			}
 			//login = lin.toString();
 			//password = pword.toString();
-			
+			//theres no password right now
 			
 			
 			ArrayList<String> urlStore = new ArrayList<String>();
@@ -47,8 +47,9 @@ public class main {
 			searchTerms.add("C#");
 			searchTerms.add("Junior Software");
 			
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
+			
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&onlyshowme=datesmart");
 			
@@ -57,6 +58,7 @@ public class main {
 				boolean add;
 				
 				org.jsoup.nodes.Document doc = Jsoup.connect(urlStore.get(i)).get();
+				//org.jsoup.nodes.Document doc = Jsoup.connect("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart").get();
 				Elements links = doc.select("a[href]");
 				
 				String linkString = "";
@@ -92,10 +94,10 @@ public class main {
 				jobStore.addAll(set);
 			}
 			
-			AIs.server();
-			for (int i = 0; i < jobStore.size(); i++) {
-			AIs.mailer(login, password);
-			}
+		//	AIs.server();
+		//	for (int i = 0; i < jobStore.size(); i++) {
+		//	AIs.mailer(login, password);
+		//	}
 			
 			//now I need to take this data and search each url
 			

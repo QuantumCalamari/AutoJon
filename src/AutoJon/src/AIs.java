@@ -247,11 +247,66 @@ public class AIs {
 		    }
 
 		    public static String emailSearch(String doc) {
-		    	String email;
+		    	String email = "";
+		    	int beg = 0, end = 0;
+		    			   		    	
+		    	if (doc.contains("@")) {
+		    	beg = doc.indexOf("@");
+		    	end = doc.indexOf("@");
+		    	while (doc.charAt(beg) != ' ') {
+		    		beg--;
+		    	}
 		    	
-		    			    	
+		    	while (doc.charAt(end) != ' ') {
+		    		end++;
+		    	}
+		    		
+		    	while (beg < end) {
+		    			email = email + doc.charAt(beg);
+		    			beg++;
+		    		}	
+		    	}
 		    	
-		    	return "String";
+		    	return email;
 		    }
+	
+	public static String nameSearch(String email) {
+		int at = 0;
+		String rawName = "";
+		String firstName = "", surName = "";
+		char f, s;
+		
+		if (email.contains("@")) {
+			at = email.indexOf("@");
+		}
+		
+		for (int i = 0; i < at; i++) {
+			rawName = rawName + email.charAt(i);
+		}
+		
+		if (rawName.contains(".")) {
+			for (int i = 1; i < rawName.indexOf("."); i++) {
+				firstName = firstName + rawName.charAt(i);
+			}
+			for (int i = (rawName.indexOf(".") + 1); i < rawName.length(); i++) {
+				surName = surName + rawName.charAt(i);
+			}
+		}
+		
+		f = Character.toUpperCase(firstName.charAt(0));
+		s = Character.toUpperCase(surName.charAt(0));
+
+		System.out.println(f);
+		System.out.println(s);
+		
+		System.out.println(rawName);
+		System.out.println(firstName);
+		System.out.println(surName);
+		
+		firstName = f + firstName.substring(1, firstName.length());
+		surName = s + surName.substring(1, surName.length());
+		
+		return firstName + " " + surName;
+	}
 	
 }

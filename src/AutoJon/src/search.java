@@ -13,10 +13,13 @@ public class search {
 	public static String ranking(Document doc, ArrayList<String> searchTerms, String site) {
 		
 		String search;
+		String email, name;
 		String CL;
-		String title = "Lead Astronaut", name = "no one";
+		String title = "Lead Astronaut";
 		boolean cpp = false, java = false, cs = false, wd = false, nbool = false, jrefbool;
 		org.jsoup.select.Elements cont = doc.select("div#job-content");
+		
+		//System.out.println(cont);
 		
 		List myList = new ArrayList();
 		
@@ -35,7 +38,9 @@ public class search {
 			}
 		}
 		
-		AIs.emailSearch(search);
+		email = AIs.emailSearch(search);
+		name = AIs.nameSearch(email);
+		System.out.println(name);
 		
 		CL = AIs.letterGen(name, nbool, "", false, title, wd, cs, cpp, java, site, false, "");
 		
