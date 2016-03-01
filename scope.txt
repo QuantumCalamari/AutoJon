@@ -26,3 +26,13 @@ AutoJob:
 	   Jon and AutoJon
 
 	   If there are problems with this bot you can help by providing feedback about what went wrong"
+
+
+
+
+
+To do - 
+
+- connect the email thing up
+- add more searches
+- 

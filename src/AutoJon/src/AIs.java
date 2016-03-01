@@ -1,5 +1,22 @@
 package AutoJon.src;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+
+import com.sun.mail.smtp.SMTPMessage;
+
+import javax.activation.*;
+import java.util.Properties;
+
 public class AIs {
 
 	public static String letterGen(String name, boolean nbool, String jRef, boolean jRefbool, String title, boolean wd, boolean cs, boolean cpp, boolean java, String site, boolean compBool, String company) {
@@ -82,6 +99,16 @@ public class AIs {
 				
 		letter = att + intro + p1 + p2 + p3 + conc + sig;
 		
+		try {
+		PrintWriter CL = new PrintWriter("CoverLetter.doc");
+		
+		CL.write(letter);
+		CL.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return letter;
 	}
 	
@@ -104,5 +131,127 @@ public class AIs {
 		
 		return email;
 	}
+	
+	public static void mailer(String login, String password) {
+		Properties props = new Properties();
+		    props.put("mail.smtp.host", "smtp.gmail.com");
+		    props.put("mail.smtp.socketFactory.port", "465");
+		    props.put("mail.smtp.socketFactory.class",
+		            "javax.net.ssl.SSLSocketFactory");
+		    props.put("mail.smtp.auth", "true");
+		    props.put("mail.smtp.port", "805");
+
+		    Session session = Session.getDefaultInstance(props,new         javax.mail.Authenticator()
+		                            {
+		                                 @Override
+		                                protected PasswordAuthentication     getPasswordAuthentication()
+		                                {
+		                return new PasswordAuthentication(login, password);
+		                                }
+		        });
+
+		    try {
+
+		        SMTPMessage message = new SMTPMessage(session);
+		        message.setFrom(new InternetAddress("jonacollins3@gmail.com"));
+		        message.setRecipients(Message.RecipientType.TO, //receiver here
+		                                 InternetAddress.parse( "jonacollins3@gmail.com" ));
+
+		                    message.setSubject("Testing Subject");
+		        message.setText("This is Test mail");
+		       //              message.setContent
+			     // ("This Is my First Mail Through Java", "/");
+		      //  message.setMessage("This Is my First Mail Through Java");
+
+		                    message.setNotifyOptions(SMTPMessage.NOTIFY_SUCCESS);
+		                    int returnOption = message.getReturnOption();
+
+		                     //System.out.println(returnOption);        
+		                Transport.send(message);
+		               System.out.println("sent");
+
+		    }
+		            catch (MessagingException e)
+		            {
+		        throw new RuntimeException(e);
+
+		    }
+		}
+
+	//mail server
+	
+	public static void server() {
+
+		        new Thread(new SimpleServer()).start();
+
+		        new Thread(new SimpleClient()).start();
+
+		    }
+
+		    static class SimpleServer implements Runnable {
+
+		        @Override
+
+		        public void run() {
+
+		            ServerSocket serverSocket = null;
+		
+		            try {
+		                serverSocket = new ServerSocket(3333);
+
+		                serverSocket.setSoTimeout(7000);
+		                while (true) {
+		                    Socket clientSocket = serverSocket.accept();
+		                    BufferedReader inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		                    System.out.println("Client said :" + inputReader.readLine());
+		                }
+		            } catch (SocketTimeoutException e) {
+		                e.printStackTrace();
+		            } catch (IOException e) {
+		                e.printStackTrace();
+		            } finally {
+		                try {
+		                    if (serverSocket != null)
+		                        serverSocket.close();
+		                } catch (IOException e) {
+		                    e.printStackTrace();
+		                }
+		            }
+		        }
+		    }
+		    static class SimpleClient implements Runnable {
+		        @Override
+		        public void run() {
+		            Socket socket = null;
+		            try {
+		                Thread.sleep(3000);
+		                socket = new Socket("localhost", 3333);
+		                PrintWriter outWriter = new PrintWriter(
+		                        socket.getOutputStream(), true);
+		                outWriter.println("Hello Mr. Server!");
+		            } catch (InterruptedException e) {
+		                e.printStackTrace();
+		            } catch (UnknownHostException e) {
+		                e.printStackTrace();
+		            } catch (IOException e) {
+		                e.printStackTrace();
+		            } finally {
+		                try {
+		                    if (socket != null)
+		                        socket.close();
+		                } catch (IOException e) {
+		                    e.printStackTrace();
+		                }
+		            }
+		        }
+		    }
+
+		    public static String emailSearch(String doc) {
+		    	String email;
+		    	
+		    			    	
+		    	
+		    	return "String";
+		    }
 	
 }

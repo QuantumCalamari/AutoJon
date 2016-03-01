@@ -33,9 +33,9 @@ public class search {
 			} else if (i == 3) {
 				cs = search(search, searchTerms.get(i));
 			}
-			
-			
 		}
+		
+		AIs.emailSearch(search);
 		
 		CL = AIs.letterGen(name, nbool, "", false, title, wd, cs, cpp, java, site, false, "");
 		

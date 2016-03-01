@@ -1,5 +1,6 @@
 package AutoJon.src;
 import org.w3c.dom.Document;
+import java.io.Console;
 import java.io.IOException;
 import org.jsoup.*;
 import org.jsoup.helper.*;
@@ -7,6 +8,7 @@ import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import AutoJon.src.*;
 
@@ -18,6 +20,21 @@ public class main {
 			
 			String site = "S1 Jobs";
 			String thisCL = "";
+			String login = "", password = "";
+			Console cnsl = null;	
+			
+			cnsl = System.console();
+			//Console pword = System.console();
+			if (cnsl != null) {
+			login = cnsl.readLine("Login: ");
+			password = cnsl.readLine("Password: ");
+			} else {
+				
+			}
+			//login = lin.toString();
+			//password = pword.toString();
+			
+			
 			
 			ArrayList<String> urlStore = new ArrayList<String>();
 			ArrayList<String> jobStore = new ArrayList<String>();
@@ -63,7 +80,7 @@ public class main {
 		            	
 		        	}
 				
-				System.out.println(jobStore.size());
+				//size = jobStore.size();
 			}
 			
 			//take job store and search for duplicates
@@ -73,6 +90,11 @@ public class main {
 			if (set.size() < jobStore.size()) {
 				jobStore.clear();
 				jobStore.addAll(set);
+			}
+			
+			AIs.server();
+			for (int i = 0; i < jobStore.size(); i++) {
+			AIs.mailer(login, password);
 			}
 			
 			//now I need to take this data and search each url
@@ -105,8 +127,7 @@ public class main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+	
 		
 	}	
 }
