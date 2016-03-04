@@ -19,23 +19,33 @@ import java.util.Properties;
 
 public class AIs {
 
-	public static String letterGen(String name, boolean nbool, String jRef, boolean jRefbool, String title, boolean wd, boolean cs, boolean cpp, boolean java, String site, boolean compBool, String company) {
-		String letter, att, intro, p1, p2, p3, conc, sig;
+	public static String letterGen(String name, boolean nbool, String jRef, boolean jRefbool, String title, boolean g1, boolean g2, boolean g3, boolean s1, String siteRaw, boolean compBool, String company) {
+		String letter, att, intro, p1, p2, p31, p32, conc, sig;
 		
 		intro = "";
 		p1 = "";
 		p2 = "";
-		p3 = "";
+		p31 = "";
+		p32 = "";
+	//	p33 = "";
+		
+		String site = "";
+		
+		for (int i = 11; i < siteRaw.length(); i++) {
+			site = site + siteRaw.charAt(i);
+		}
 		
 		//generate a header
 		if (nbool) {
-			att = name;
+			att = name + ",\n\n";
 		} else {
-			att = "Dear Recruiter\n \n";
+			att = "Dear Recruiter,\n \n";
 		}
 		
 		if (jRefbool) {
 			intro = "I would like to apply for the " + title + " with your client (ref: " + jRef + ") found on " + site + ".\n\n";
+		} else {
+			intro = "I would like to apply for the " + title + " with your client found on " + site + ".\n\n";
 		}
 		
 		p1 = "I graduated in May 2014 from the University of Salford where I was awarded a First Class Master’s in Physics. "
@@ -45,40 +55,38 @@ public class AIs {
 				+ "Master’s thesis I was chosen for an internship at Daresbury Laboratory in Warrington, where I completed an internship in "
 				+ "computational analysis of semiconductors.\n\n";
 		
-		if (cpp && java) {
-			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
-					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
-					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
-					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
-			p3 = "For development I work primarily in an object oriented system with C++ and Java, and I have solid knowledge of Fortran through updating legacy code.  "
-					+ "I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
-		} else if (cpp && !java) {
-			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
-					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
-					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
-					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
-			p3 = "For development I work mostly with C++ and Java, though I also have experience of Fortran through updating legacy code.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
-		} else if (!cpp && java) {
-			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
-					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
-					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
-					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
-			p3 = "For development I work mostly with Java and C++, though I also have experience of Fortran through updating legacy code.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
-		} else if (cs) {
-			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
-					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
-					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
-					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
-			p3 = "For development I work mostly with Java and C++, though I also have an interest in game development where I use C# for writing "
-					+ "animation scripts in Unity.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
-		} else if (wd) {
-			//need to change this to a web dev paragraph
-			p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit in Belgium "
-					+ "where I am currently working on the application of automation in materials research.  So far I have automated the "
-					+ "generation of input files, data extraction and analysis methods used within the group.  I also collaborate on the "
-					+ "development of the Q Chem package with a development team at the National Taiwan Institute.\n\n";
-			p3 = "For development I work mostly with Java and C++, though I also have an interest in game development where I use C# for writing "
-					+ "animation scripts in Unity.  I also have experience of web development and have a HTML, CSS and JavaScript.\n\n";
+		p2 = "After a year in the United States working as a tutor, I returned to Europe to conduct a PhD at Hasselt Universiteit "
+				+ "in Belgium where I am currently working on the application of automation in materials research.  "
+				+ "I have already automated the calculation process and analysis of the subsequent output with some software "
+				+ "written in C++ and development is ongoing, and I contribute to the Q Chem package through a collaboration "
+				+ "with my co-promotor at the National University of Taiwan.";
+		
+	
+		if (g1) {
+			p31 = "Most of my code is written in object oriented languages C++ and Java, unless a specific problem requires another solution."
+					+ "  I also have a solid knowledge of Fortran, as much of my work involves the update of legacy code.  In my time working"
+					+ " on the development of code I have also improved my planning and design skills, which I’ve found to be crucial to a "
+					+ "successful project.  ";
+		} else if (g2) {
+			p31 = "I mainly make use of HTML, CSS and JavaScript, and associated libraries such as d3.js, in my work for processing and "
+					+ "display of data. In summer of 2015 I contracted to complete a web app for the completion of physics calculations "
+					+ "and display of data to end users.  I am also the current webmaster for the website of my research group.  ";
+		} else if (g3) {
+			p31 = "My background in physics has provided me with a strong foundation in the mathematics required for game programming.  "
+					+ "I have experience in using Blender for modelling, and have made a few models for myself, and I am gaining confidence"
+					+ " with Unity and working toward producing a game of my own.  I also have a strong interest in physics engines: I "
+					+ "have developed some fairly basic engines for 2D graphical output of calculation results and I am currently "
+					+ "developing a 3D engine for my research group.  ";
+			s1 = true;
+		}
+		
+		if (s1) {
+			p32 = "I am also required to regularly brief my colleagues and senior staff members in Belgium with updates on my work,"
+					+ " and also to liaise with the development teams in Taiwan.\n\n";
+		} else {
+			
+			p32 = "My background in physics has also provided me with a strong foundation in mathematics and problem solving, and in "
+					+ "data handling which much of my code is currently used for.\n\n";
 		}
 		
 		if (!compBool) {
@@ -97,17 +105,18 @@ public class AIs {
 		
 		sig = "Regards, \n\nJon Collins";
 				
-		letter = att + intro + p1 + p2 + p3 + conc + sig;
+		letter = att + intro + p1 + p2 + p31 + p32 + conc + sig;
+		//letter = intro + p1 + p2 + p3 + conc + sig;
 		
-		try {
-		PrintWriter CL = new PrintWriter("CoverLetter.doc");
+		/*try {
+		PrintWriter CL = new PrintWriter("CoverLetter.docx");
 		
 		CL.write(letter);
 		CL.close();
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		return letter;
 	}
@@ -119,20 +128,26 @@ public class AIs {
 			name = "Dear Recruiter";
 		}
 		
+		//System.out.println("name in emailgen" + name);
+		
 		if (jRefbool) {
 			main = "Hi! I am Jon's auto-application bot!\n\nI have matched your requirements for the " + title + " position (ref:" + jRef + ") with Jon's specifications and submitted a CV with a cover letter I wrote.  We both hope to hear back from you soon.\n\n";
 		} else {
 			main = "Hi! I am Jon's auto-application bot!\n\nI have matched your requirements for the " + title + " position with Jon's specifications and submitted a CV with a cover letter I wrote.  We both hope to hear back from you soon.\n\n";
 		}
 		
-		sig = "Regards\n\nJon Collins, and AutoJon";
+		sig = "Regards\n\nJon Collins, and AutoJon\n\n\n";
 		
-		email = name + ",\n\n" + main + sig;
+		String sub = "We're still ironing out the kinks, so we're sorry if I got it wrong.  We're working on making me smarter.";
 		
+		//email = name + ",\n\n" + main + sig + sub;
+	
+		email = "\n\n" + main;
+	
 		return email;
 	}
 	
-	public static void mailer(String login, String password) {
+	public static void mailer(String login, String password, String emessage, String jobname, String email, String letter) {
 		Properties props = new Properties();
 		    props.put("mail.smtp.host", "smtp.gmail.com");
 		    props.put("mail.smtp.socketFactory.port", "465");
@@ -155,14 +170,36 @@ public class AIs {
 		        SMTPMessage message = new SMTPMessage(session);
 		        message.setFrom(new InternetAddress("jonacollins3@gmail.com"));
 		        message.setRecipients(Message.RecipientType.TO, //receiver here
-		                                 InternetAddress.parse( "jonacollins3@gmail.com" ));
-
-		                    message.setSubject("Testing Subject");
-		        message.setText("This is Test mail");
-		       //              message.setContent
-			     // ("This Is my First Mail Through Java", "/");
+		        InternetAddress.parse( "autojonfeedback@gmail.com, " + email));
+		        		
+		        		message.setSubject("Application for " + jobname);
+		       // message.setText(emessage);
+		        //             message.setContent
+			   //   ("This Is my First Mail Through Java", "/");
 		      //  message.setMessage("This Is my First Mail Through Java");
+		                    BodyPart messageBodyPart = new MimeBodyPart();
+		                    messageBodyPart.setText(letter + "\n\n" + emessage);
+		                    
 
+		        Multipart multipart = new MimeMultipart();
+		        	
+		        multipart.addBodyPart(messageBodyPart);
+		        /* removed cover letter for testing reasons
+		        //attach things
+		        BodyPart attach = new MimeBodyPart();
+		        DataSource source = new FileDataSource("CoverLetter.docx");
+		        attach.setDataHandler(new DataHandler(source));
+		        attach.setFileName("CoverLetter.docx");
+		        multipart.addBodyPart(attach);
+		        */
+		        BodyPart CV = new MimeBodyPart();
+		        DataSource cvSource = new FileDataSource("joncollinsCV.pdf");
+		        CV.setDataHandler(new DataHandler(cvSource));
+		        CV.setFileName("joncollinsCV.pdf");
+		        multipart.addBodyPart(CV);
+		        
+		        message.setContent(multipart);
+		        
 		                    message.setNotifyOptions(SMTPMessage.NOTIFY_SUCCESS);
 		                    int returnOption = message.getReturnOption();
 
@@ -249,7 +286,10 @@ public class AIs {
 		    public static String emailSearch(String doc) {
 		    	String email = "";
 		    	int beg = 0, end = 0;
-		    			   		    	
+		    			 
+		    	
+		    	//System.out.println("email is being called");
+		    	//System.out.println(doc);
 		    	if (doc.contains("@")) {
 		    	beg = doc.indexOf("@");
 		    	end = doc.indexOf("@");
@@ -267,6 +307,7 @@ public class AIs {
 		    		}	
 		    	}
 		    	
+		    	System.out.println(email);
 		    	return email;
 		    }
 	
@@ -275,6 +316,8 @@ public class AIs {
 		String rawName = "";
 		String firstName = "", surName = "";
 		char f, s;
+		
+		//System.out.println("email is being called");
 		
 		if (email.contains("@")) {
 			at = email.indexOf("@");
@@ -293,20 +336,35 @@ public class AIs {
 			}
 		}
 		
-		f = Character.toUpperCase(firstName.charAt(0));
-		s = Character.toUpperCase(surName.charAt(0));
+		if (rawName.contains(".")) {
+			f = Character.toUpperCase(firstName.charAt(0));
+			s = Character.toUpperCase(surName.charAt(0));
 
-		System.out.println(f);
-		System.out.println(s);
-		
-		System.out.println(rawName);
-		System.out.println(firstName);
-		System.out.println(surName);
-		
-		firstName = f + firstName.substring(1, firstName.length());
-		surName = s + surName.substring(1, surName.length());
+			firstName = f + firstName.substring(1, firstName.length());
+			surName = s + surName.substring(1, surName.length());
+		}
 		
 		return firstName + " " + surName;
+	}
+
+	public static String refSearch(String search) {
+		String ref = "";
+		int i = 8;
+		
+		while (search.charAt(i) != '<') {
+				i++;
+				//System.out.println(search.charAt(i));
+			}
+			
+		if (search.charAt(i) == '<') {	
+			ref = search.substring(8, i);
+		}
+		System.out.println("ref: " + ref);
+		
+		return ref;
+		
+		//System.out.println("Job string index: " + search.indexOf("Job ref. no."));
+		//System.out.println(search.substring(search.indexOf("Job ref. no.")+22, search.indexOf("Job ref. no.")+28));
 	}
 	
 }

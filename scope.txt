@@ -33,6 +33,3 @@ AutoJob:
 
 To do - 
 
-- connect the email thing up
-- add more searches
-- 

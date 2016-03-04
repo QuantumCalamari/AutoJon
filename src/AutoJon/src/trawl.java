@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class trawl {
 
-	public static boolean searchString(String listing, String url, ArrayList<String> searchTerm) {
+	public static boolean searchString(String listing, String url, ArrayList<String> searchTerm, ArrayList<String> remTerm) {
 		
 		boolean add = false;
 		
@@ -16,8 +16,10 @@ public class trawl {
 			}	
 		}
 
-		if (listing.contains("Senior") || listing.contains("Teacher")) {
-			add = false;
+		for (int i = 0; i < remTerm.size(); i++) {
+			if (listing.contains(remTerm.get(i))) {
+				add = false;
+			}
 		}
 		
 		return add;
