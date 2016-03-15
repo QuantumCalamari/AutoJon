@@ -60,44 +60,51 @@ public class main {
 			remTerms.add("Teacher");
 			remTerms.add("Lead");
 			
-			/*urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart");
+			
+			/*urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&salary_lo=0&salary_hi=165000&non_default_salary=0&facet_search=1&order_by=best-match&cb=380861&page=2");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&salary_lo=0&salary_hi=165000&non_default_salary=0&facet_search=1&order_by=best-match&cb=380861&page=3");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=12");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=13");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=14");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=15");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=8");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=9");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=10");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=11");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart&page=2");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart&page=2");
+			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=2");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=3");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=4");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=5");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=6");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=7");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=8");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=9");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=10");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=11");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=12");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=13");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=14");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&page=15");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart&page=2");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart&page=2");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart&page=3");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart&page=4");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=java&onlyshowme=datesmart&page=5");
 			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&onlyshowme=datesmart");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&salary_lo=0&salary_hi=165000&non_default_salary=0&facet_search=1&order_by=best-match&cb=380861&page=2");
-			urlStore.add("http://www.s1jobs.com/jobs/find?keywords_required=junior%20software&salary_lo=0&salary_hi=165000&non_default_salary=0&facet_search=1&order_by=best-match&cb=380861&page=3");
+			
 			*/
 			
+			//urlStore.add("http://www.irishjobs.ie/ShowResults.aspx?Keywords=c%2B%2B&Location=0&Category=&Recruiter=Company&Recruiter=Agency");
+			//urlStore.add("https://www.ninjaproxy.ninja/browse.php/TsaySMa3/DC3K7Ik0/jKC953cY/9FmNvyoy/9DRHmdPp/ROpHBhmY/lH6YK55P/GuQNpvn3/98coEZCW/tnIZqhmh/hWYjE9uj/rol_2Be1/m_2F_2Bo/4P_2FPkV/HoIivZo9/7w_3D_3D/b29/#.Vtl-iZwrKhd");
+			//urlStore.add("https://www.ninjaproxy.ninja/browse.php/TsaySMa3/DC3K7Ik0/jKC953cY/9FmNvyoy/9DRHmdPp/ROpHBhmY/lH6YK55P/GuQNpvCz/s_2BQrTL/zf_2FTEC/qgi4lzo1/F4mps4hm/ekU_3D/b29/#.Vtl-oJwrKhc");
+			//urlStore.add("https://www.ninjaproxy.ninja/browse.php/TsaySMa3/DC3K7Ik0/jKC953cY/9FmNvyoy/9DRHmdPp/ROpHBhmY/lH6YK55P/GuQNpvCn/q_2BxiUf/eBtDEFow/uik3U0UJ/KirJx0YF/6n4IZXpf/wAD5Q8sY/k7/b29/#.Vtl-uZwrKhc");
+			//urlStore.add("https://www.ninjaproxy.ninja/browse.php/TsaySMa3/DC3K7Ik0/jKC953cY/9FmNvyoy/9DRHmdPp/ROpHBhmY/lH6YK55P/GuQNpuq6/vPZkQKGV/6ywGvAy9/nXA8E8Co/oZFie1yx/_2F5c_3D/b29/#.Vtl-y5wrKhc");
+		
 			// temporary use of London for testing
-			urlStore.add("http://www.jobsite.co.uk/vacancies?search_type=quick&query=c%2B%2B&location=london&radius=20");
-			urlStore.add("http://www.indeed.co.uk/jobs?q=software+engineer&l=london");
-			urlStore.add("http://www.irishjobs.ie/ShowResults.aspx?Keywords=C%2B%2B+Developer&Location=0&Category=&Recruiter=Company&Recruiter=Agency");
+			urlStore.add("http://www.jobsite.co.uk/vacancies?search_type=quick&query=junior+developer&location=scotland&radius=20");
+		//	urlStore.add("http://www.indeed.co.uk/jobs?q=software+engineer&l=london");
+		//	urlStore.add("http://www.irishjobs.ie/ShowResults.aspx?Keywords=C%2B%2B+Developer&Location=0&Category=&Recruiter=Company&Recruiter=Agency");
 			
 			for (int i = 0; i < urlStore.size(); i++) {
 				
 				boolean add;
 				
 				org.jsoup.nodes.Document doc = Jsoup.connect(urlStore.get(i)).get();
-				//org.jsoup.nodes.Document doc = Jsoup.connect("https://www.jobsite.co.uk/cgi-bin/applynow.cgi?form_action=apply_page&vac_ref=955357545&from_jbe=&tracking_src=search&engine=stepmatch&search_referer=internal").get();
 				Elements links = doc.select("a[href]");
 				
 				String linkString = "";
@@ -107,8 +114,6 @@ public class main {
 						linkString = link.attr("href");
 		               	String linkInnerH = link.html();
 		            	
-		              //	System.out.println(site + linkString);
-		               	
 		               	add = trawl.searchString(linkInnerH, linkString, searchTerms, remTerms);
 		               /*	
 		               	if (i < 4) {
@@ -118,15 +123,14 @@ public class main {
 						}
 		               	*/
 		               	
-		               	site = "http://www.s1jobs.com";
+		               	site = "http://www.jobsite.co.uk";
+		              	//site = "http://www.irishjobs.ie";
 		               	
 		               	if (add) {
 		               		jobStore.add(site + linkString);
 		               	}
 		            	
 		        	}
-				
-				//size = jobStore.size();
 			}
 			
 			//take job store and search for duplicates
@@ -146,30 +150,16 @@ public class main {
 			//now I need to take this data and search each url
 			
 			for (int i = 0; i < jobStore.size(); i++) {
-				//System.out.println(site);
-				//search every url in the list
 				org.jsoup.nodes.Document doc = Jsoup.connect(jobStore.get(i)).get();
 				thisCL = search.ranking(doc, site);
 				CL.add(thisCL);
 			}
 			
-			//take output of search.ranking and generate cover letter with it
-			
-			
-			
-			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", true, true, true, "S1 Jobs", false, "none"));
-			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, true, true, "S1 Jobs", false, "none"));
-			//System.out.println(AIs.letterGen("none", false, "1234", true, "Lead Astronaut", false, false, true, "S1 Jobs", false, "none"));
-			//System.out.println(AIs.emailGen("none", false, "1234", true, "Lead Astronaut"));
-			
-			//how to send email
-			//http://www.tutorialspoint.com/java/java_sending_email.htm
-			for (int i = 0; i < CL.size(); i++) {
+		//	for (int i = 0; i < CL.size(); i++) {
 				//System.out.println(CL.get(i));
 				//put this in an output file
-			}
-			
-			//do the emailing
+		//	}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

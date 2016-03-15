@@ -138,7 +138,7 @@ public class AIs {
 		
 		sig = "Regards\n\nJon Collins, and AutoJon\n\n\n";
 		
-		String sub = "We're still ironing out the kinks, so we're sorry if I got it wrong.  We're working on making me smarter.";
+		String sub = "We're still ironing out the kinks, so we're sorry if I got it wrong.  We're working on making me smarter.  Any feedback can be sent to AutoJonFeedback@gmail.com";
 		
 		//email = name + ",\n\n" + main + sig + sub;
 	
@@ -166,17 +166,14 @@ public class AIs {
 		        });
 
 		    try {
-
+		    	System.out.println("in mailer: " + email);
 		        SMTPMessage message = new SMTPMessage(session);
 		        message.setFrom(new InternetAddress("jonacollins3@gmail.com"));
 		        message.setRecipients(Message.RecipientType.TO, //receiver here
-		        InternetAddress.parse( "autojonfeedback@gmail.com, " + email));
+		     //   InternetAddress.parse(email));
+		      InternetAddress.parse( "autojonfeedback@gmail.com"));
 		        		
 		        		message.setSubject("Application for " + jobname);
-		       // message.setText(emessage);
-		        //             message.setContent
-			   //   ("This Is my First Mail Through Java", "/");
-		      //  message.setMessage("This Is my First Mail Through Java");
 		                    BodyPart messageBodyPart = new MimeBodyPart();
 		                    messageBodyPart.setText(letter + "\n\n" + emessage);
 		                    
@@ -202,9 +199,9 @@ public class AIs {
 		        
 		                    message.setNotifyOptions(SMTPMessage.NOTIFY_SUCCESS);
 		                    int returnOption = message.getReturnOption();
-
-		                     //System.out.println(returnOption);        
+      
 		                Transport.send(message);
+		                System.out.println(email);
 		               System.out.println("sent");
 
 		    }
@@ -287,9 +284,6 @@ public class AIs {
 		    	String email = "";
 		    	int beg = 0, end = 0;
 		    			 
-		    	
-		    	//System.out.println("email is being called");
-		    	//System.out.println(doc);
 		    	if (doc.contains("@")) {
 		    	beg = doc.indexOf("@");
 		    	end = doc.indexOf("@");
@@ -307,6 +301,10 @@ public class AIs {
 		    		}	
 		    	}
 		    	
+		    	if (email.contains("<") || email.contains(">")) {
+		    		email.substring(0, email.indexOf('<')-1);
+		    	}
+		    	
 		    	System.out.println(email);
 		    	return email;
 		    }
@@ -316,8 +314,6 @@ public class AIs {
 		String rawName = "";
 		String firstName = "", surName = "";
 		char f, s;
-		
-		//System.out.println("email is being called");
 		
 		if (email.contains("@")) {
 			at = email.indexOf("@");
@@ -353,7 +349,6 @@ public class AIs {
 		
 		while (search.charAt(i) != '<') {
 				i++;
-				//System.out.println(search.charAt(i));
 			}
 			
 		if (search.charAt(i) == '<') {	
@@ -362,9 +357,6 @@ public class AIs {
 		System.out.println("ref: " + ref);
 		
 		return ref;
-		
-		//System.out.println("Job string index: " + search.indexOf("Job ref. no."));
-		//System.out.println(search.substring(search.indexOf("Job ref. no.")+22, search.indexOf("Job ref. no.")+28));
 	}
 	
 }
