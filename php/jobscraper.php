@@ -18,13 +18,12 @@ function scrapeHTML($url) {
 	$html = curl_exec($ch);
 	curl_close($ch);
 	
-	if (strpos($html,"covering_letter_modal")) {
-		echo "cover letter found<br />";
-		if(isset($_POST['covering_letter_modal'])) {
-			echo $_POST['covering_letter_modal'];
-		} else {
-			echo "nothing";
-		}
+	$searchTerms = array();
+	
+	if ((strpos($html,"senior")) || (strpos($html,"teacher")) || (strpos($html,"lead"))) {
+		echo "found a bad term <br />";
+	} else {
+		echo "no bad terms found";
 	}
 	
 	get_links($url);
@@ -87,7 +86,11 @@ echo "<br /> No duplicates <br />";
 $search = array_unique($search);
 
 foreach($search as $p) {
-		echo $p."<br />";
+		scrapeHTML($p);
+	echo $p."<br />";
 	}
+
+//go through each 
+
 
 ?>
