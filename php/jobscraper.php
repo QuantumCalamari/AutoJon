@@ -20,9 +20,17 @@ function scrapeHTML($url) {
 	
 	$searchTerms = array();
 	
-	if ((strpos($html,"senior")) || (strpos($html,"teacher")) || (strpos($html,"lead"))) {
-		echo "found a bad term <br />";
+	
+	$regex = '#\<div id="job-header-title"\>(.+?)\<\/div\>#s';
+	preg_match($regex, $html, $matches);
+	$match = $matches[0];
+	echo $match;
+	
+	if ((strpos($match,"Senior")) || (strpos($match,"Teacher")) || (strpos($match,"Lead"))) {
+		echo "found a bad term";
 	} else {
+		//go to apply page and hit the apply button
+		
 		echo "no bad terms found";
 	}
 	
