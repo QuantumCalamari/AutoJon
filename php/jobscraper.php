@@ -6,7 +6,7 @@
 
 $crawl = array("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20java&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20web%20developer&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior+developer&salary_lo=25000&salary_hi=55000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=4473909", "http://www.s1jobs.com/jobs/find?keywords_required=physics&salary_lo=15000&salary_hi=65000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=7235990");
 
-$saved = array();
+$search = array();
 
 function scrapeHTML($url) {
 
@@ -67,19 +67,27 @@ function get_links($url) {
 			$link = $url;
 		}
 		
-		return  $jobs;
+		
 		//echo $link."<br />";	
 	}
+	return  $jobs;
 }
 
 //create array of stuff
 foreach($crawl as $url) {
-	//echo $url;
-	$saved = array_merge($saved, get_links($url));
+	$search = array_merge($search, get_links($url));
 }
 
-foreach($saved as $print) {
-	echo $print;
-}
+foreach($search as $p) {
+		echo $p."<br />";
+	}
+
+echo "<br /> No duplicates <br />"; 
+	
+$search = array_unique($search);
+
+foreach($search as $p) {
+		echo $p."<br />";
+	}
 
 ?>
