@@ -16,8 +16,21 @@ function scrapeHTML($url) {
 	$html = curl_exec($ch);
 	curl_close($ch);
 	
-	echo $url."<br />";
+	if (strpos($html,"covering_letter_modal")) {
+		echo "cover letter found<br />";
+		if(isset($_POST['covering_letter_modal'])) {
+			echo $_POST['covering_letter_modal'];
+		} else {
+			echo "nothing";
+		}
+	}
 	
+	get_links($url);
+	
+}
+
+function coverletter($url) {
+
 }
 
 function get_links($url) {
@@ -43,10 +56,13 @@ function get_links($url) {
 		if (substr($link,0,5) == "/job/") {
 			if (strpos($link, "telecommunications")) {
 				$link = "http://www.s1jobs.com".$link;
-				scrapeHTML($link);
+				get_links($link);
 			} else {
 				$link = $url;
 			}
+		} else if (substr($link, 0, 7) == "/apply/") {
+			$link = "http://www.s1jobs.com".$link;
+			scrapeHTML($link);
 		} else {
 			$link = $url;
 		}
