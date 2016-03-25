@@ -4,7 +4,9 @@
 
 <?php
 
-$crawl = "http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&order_by=date_posted";
+$crawl = array("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20java&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20web%20developer&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior+developer&salary_lo=25000&salary_hi=55000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=4473909", "http://www.s1jobs.com/jobs/find?keywords_required=physics&salary_lo=15000&salary_hi=65000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=7235990");
+
+$saved = array();
 
 function scrapeHTML($url) {
 
@@ -40,6 +42,7 @@ function get_links($url) {
 	preg_match_all("/$regex/siU", $input, $matches);
 	
 	$l = $matches[2];
+	$jobs = array();
 	
 	foreach($l as $link) {
 		
@@ -56,25 +59,27 @@ function get_links($url) {
 		if (substr($link,0,5) == "/job/") {
 			if (strpos($link, "telecommunications")) {
 				$link = "http://www.s1jobs.com".$link;
-				get_links($link);
+				array_push($jobs, $link);
 			} else {
 				$link = $url;
 			}
-		} else if (substr($link, 0, 7) == "/apply/") {
-			$link = "http://www.s1jobs.com".$link;
-			scrapeHTML($link);
 		} else {
 			$link = $url;
 		}
 		
+		return  $jobs;
 		//echo $link."<br />";	
 	}
 }
 
 //create array of stuff
+foreach($crawl as $url) {
+	//echo $url;
+	$saved = array_merge($saved, get_links($url));
+}
 
+foreach($saved as $print) {
+	echo $print;
+}
 
-
-get_links($crawl)
-	
 ?>
