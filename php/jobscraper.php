@@ -8,6 +8,11 @@ $crawl = array("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlysh
 
 $search = array();
 
+function hitbutton($url) {
+	
+}
+
+
 function scrapeHTML($url) {
 
 	$ch = curl_init();
@@ -27,19 +32,43 @@ function scrapeHTML($url) {
 	echo $match;
 	
 	if ((strpos($match,"Senior")) || (strpos($match,"Teacher")) || (strpos($match,"Lead"))) {
-		echo "found a bad term";
+		//	echo "found a bad term";
 	} else {
 		//go to apply page and hit the apply button
-		
-		echo "no bad terms found";
+		apply($url);
+		echo "no bad terms found<br />";
 	}
 	
 	get_links($url);
 	
 }
 
-function coverletter($url) {
-
+function apply($url) {
+	$input = @file_get_contents($url);
+	$regex = "<a\s[*>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+	$regex = "<a\s[*>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+	preg_match_all("/$regex/siU", $input, $matches);
+	
+	$l = $matches[2];
+		
+	foreach($l as $link) {
+		
+		if(strpos($link, "#")) {
+			$link = substr($link, 0, strpos($link, "#"));
+		}	
+		
+		if(substr($link, 0, 1) == ".") {
+			$link = substr($link, 1);
+		}
+		
+		if (substr($link,0,7) == "/apply/") {
+				$link = "http://www.s1jobs.com".$link;
+				echo "What we're looking for '".$link."<br />";
+				hitbutton($link);		
+		} else {
+			$link = $url;
+		}
+	}
 }
 
 function get_links($url) {
