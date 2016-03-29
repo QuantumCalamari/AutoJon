@@ -4,13 +4,13 @@
 
 <?php
 
-define("COOKIE_FILE", $cookie_file_location);
-
+define("CURL_TIMEOUT", 250);
+define("COOKIE_FILE", "C:\Users\Jon\AppData\Local\Microsoft\Windows\INetCookies");
 define("EXCL_HEAD", FALSE);
 define("INCL_HEAD", TRUE);
+define("WEBBOT_NAME", "AutoJon");
 
 $crawl = array("http://www.s1jobs.com/jobs/find?keywords_required=c%2B%2B&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20java&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior%20web%20developer&onlyshowme=datesmart&order_by=date_posted", "http://www.s1jobs.com/jobs/find?keywords_required=junior+developer&salary_lo=25000&salary_hi=55000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=4473909", "http://www.s1jobs.com/jobs/find?keywords_required=physics&salary_lo=15000&salary_hi=65000&non_default_salary=0&facet_search=1&order_by=date_posted&cb=7235990");
-//$crawl = array("http://www.s1jobs.com/jobs/find?keywords_required=physics&onlyshowme=datesmart");
 $search = array();
 
 function http($target, $ref, $method, $data_array, $incl_head)
@@ -56,7 +56,9 @@ function http($target, $ref, $method, $data_array, $incl_head)
             }
         # POST method configuration
         if($method == "POST")
-            {
+            
+		echo "I'm in post";
+			{
             if(isset($query_string))
                 curl_setopt ($ch, CURLOPT_POSTFIELDS, $query_string);
             curl_setopt ($ch, CURLOPT_POST, TRUE); 
@@ -104,15 +106,23 @@ function hitbutton($url) {
 	$html = curl_exec($ch);
 	curl_close($ch);
 	
-	echo "No Niall Bree";
-	
-	
-	
 	$action = "http://www.s1jobs.com/apply/apply-submit.cgi";
 	$method= "POST";
 	$ref = "" ;
+	$data_array['your_name'] = "Jon Collins";
+	$data_array['email'] = "jonacollins3@gmail.com";
+	//$data_array['covering_letter'] = "";
+	$data_array['app_core_skill'] = "IT/Telecommunications";
+	$data_array['submit-application'] = "Send application";
 	$response = http($target=$action, $ref, $method, $data_array="", EXCL_HEAD);	
+	
 }
+
+$url = "http://www.s1jobs.com/apply/613136894-100490.html";
+
+hitbutton($url);
+
+/*
 
 function scrapeHTML($url) {
 	$ch = curl_init();
@@ -228,4 +238,6 @@ foreach($search as $p) {
 	echo $p."<br />";
 	}
 //go through each 
+
+*/
 ?>
