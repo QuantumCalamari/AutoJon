@@ -146,8 +146,8 @@ function scrapeHTML($url) {
 	if (strpos($html, "Niall Bree")) {
 		echo "Niall Bree <br />";
 	} else {	
-		if ((strpos($match,"Senior")) || (strpos($match,"Teacher")) || (strpos($match,"Lead"))) {
-			//	echo "found a bad term";
+		if ((strpos($url,"Senior")) || (strpos($url,"Teacher")) || (strpos($url,"Lead"))) {
+			echo "found a bad term";
 		} else {
 			//go to apply page and hit the apply button
 			apply($url);
@@ -226,9 +226,9 @@ foreach($crawl as $url) {
 //echo count($search);
 
 foreach($search as $p) {
-	$pos = strlen($p) - 18;
-	$end = $pos + 7;
-	echo substr($p, $pos, $end)."<br />";
+	//$pos = strlen($p) - 18;
+	//$end = $pos + 7;
+	//echo substr($p, $pos, $end)."<br />";
 	echo $p."<br/>";
 	}
 //echo "<br /> No duplicates <br />"; 
