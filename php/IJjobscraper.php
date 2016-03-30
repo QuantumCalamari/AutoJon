@@ -103,7 +103,7 @@ function http($target, $ref, $method, $data_array, $incl_head)
 /*********************************HITBUTTON FUNCTION*********************************/
 
 function hitbutton($url) {
-	/*$ch = curl_init();
+	$ch = curl_init();
 	$timeout = 5;
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -111,14 +111,22 @@ function hitbutton($url) {
 	$html = curl_exec($ch);
 	curl_close($ch);
 	
-	$action = "http://www.s1jobs.com/apply/apply-submit.cgi";
+	echo $url;
+	
+	$num = substr($url, strlen($url)-8, (strlen($url)));
+	
+	/*
+	$action = $url;
 	$method= "POST";
 	$ref = "" ;
-	$data_array['your_name'] = "Jon Collins";
-	$data_array['email'] = "jonacollins3@gmail.com";
+	$data_array['jobId'] = $num;
+	$data_array['fromApp'] = "False";
+	$data_array['JobApplication.FirstName'] = "Jon";
+	$data_array['JobApplication.LastName'] = "Collins";
+	$data_array['JobApplication.Email'] = "jonacollins3@gmail.com"
 	//$data_array['covering_letter'] = "";
-	$data_array['app_core_skill'] = "IT/Telecommunications";
-	$data_array['submit-application'] = "Send application";
+//	$data_array['app_core_skill'] = "IT/Telecommunications";
+//	$data_array['submit-application'] = "Send application";
 	$response = http($target=$action, $ref, $method, $data_array="", EXCL_HEAD);	
 	*/
 }
@@ -138,21 +146,15 @@ function scrapeHTML($url) {
 	
 	echo $url;
 	
-	$regex = '#\<div id="job-header-title"\>(.+?)\<\/div\>#s';
-	preg_match($regex, $html, $matches);
-	$match = $matches[0];
-	echo $match;
 	
-	if (strpos($html, "Niall Bree")) {
-		echo "Niall Bree <br />";
-	} else {	
+	
 		if ((strpos($url,"Senior")) || (strpos($url,"Teacher")) || (strpos($url,"Lead"))) {
 			echo "found a bad term";
 		} else {
 			//go to apply page and hit the apply button
 			apply($url);
 			//echo "no bad terms found and no Niall Bree <br />";
-		}
+		
 	}
 	
 	get_links($url);
@@ -168,7 +170,7 @@ function apply($url) {
 		
 	foreach($l as $link) {
 		
-		echo $link;
+		// echo $link;
 		
 		if(strpos($link, "#")) {
 			$link = substr($link, 0, strpos($link, "#"));
@@ -178,14 +180,11 @@ function apply($url) {
 			$link = substr($link, 1);
 		}
 		
-		if (substr($link,0,7) == "/apply/") {
-				$link = "http://www.s1jobs.com".$link;
-				echo "What we're looking for '".$link."<br />";
-			if (strpos($link, "jump")) {
-				echo "I don't know what to do with that <br />";
-			}	else {			
+		if (strpos($link, "apply")) {
+		//if (substr($link,1,8) == "/apply/") {
+				$link = "http://www.irishjobs.ie".substr($link, 1, strlen($link)-2);
+			//	echo "<h1> Hey listen! </h1>".$link."<br />";
 				hitbutton($link);	
-			}
 		} else {
 			$link = $url;
 		}
@@ -229,7 +228,7 @@ foreach($search as $p) {
 	//$pos = strlen($p) - 18;
 	//$end = $pos + 7;
 	//echo substr($p, $pos, $end)."<br />";
-	echo $p."<br/>";
+	//	echo $p."<br/>";
 	}
 //echo "<br /> No duplicates <br />"; 
 	
@@ -240,9 +239,9 @@ $search = array_unique($search);
 
 
 foreach($search as $p) {
-	echo "scraping HTML <br/>";	
+	//echo "scraping HTML <br/>";	
 	scrapeHTML($p);
-	echo $p."<br />";
+	//	echo $p."<br />";
 }
 //go through each 
 ?>
