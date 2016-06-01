@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class main {
 
@@ -22,6 +24,15 @@ public class main {
 			while ((CurrentLine = br.readLine()) != null) {
 				listings.add(CurrentLine);
 			}
+			
+			//take job store and search for duplicates
+			
+			Set<String> set = new HashSet<String>(listings);
+
+			if (set.size() < listings.size()) {
+				listings.clear();
+				listings.addAll(set);
+			}			
 			
 			for (int i = 0; i < listings.size(); i++) {
 				//System.out.println("listing: " + listings.get(i));

@@ -1,7 +1,5 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,13 +17,13 @@ public class htmlScraper {
 		//adding terms to the search has to be added to this number here but everything else is taken care of
 		searchAmount = new int[34];
 		
+		System.out.println(listing);
+		
 		org.jsoup.nodes.Document ad = Jsoup.connect(listing).get();
 		
 		String post = cleanTagPerservingLineBreaks(ad.text());
 		String CL;
 		String fileName;
-		
-	//	System.out.println(post);
 		
 		searchTerms.add("C++");					//0
 		searchTerms.add("Java");				//1
@@ -35,8 +33,8 @@ public class htmlScraper {
 		searchTerms.add("web development");		//5
 		searchTerms.add("C#");					//6
 		searchTerms.add("Junior Software");		//7
-		searchTerms.add("Python");				//8  I have these twice I can reuse these pythons
-		searchTerms.add("python");				//9
+		searchTerms.add("Automation");				//8  I have these twice I can reuse these pythons
+		searchTerms.add("automation");				//9	add something about automation
 		searchTerms.add("HTML");				//10
 		searchTerms.add("CSS");					//11
 		searchTerms.add("JavaScript");			//12
@@ -73,17 +71,12 @@ public class htmlScraper {
 		}
 
 		CL = letterWriter.letterGen(searchAmount);
-
-		//String oldstring = "2011-01-18 00:00:00.0";
-		//LocalDateTime datetime = LocalDateTime.parse(oldstring, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));    
-		//fileName = datetime.toString();
+		fileName = nameGen.name();
 		
-		System.out.println(listing);
-		
-		//PrintWriter writer = new PrintWriter(("C:\\Users\\Jon\\Documents\\Job Search\\" + fileName + ".txt"), "UTF-8");
-	//	writer.println(listing + "\n\n\n");		
-	//	writer.println(CL);
-	//	writer.close();
+		PrintWriter writer = new PrintWriter(("C:\\Users\\Jon\\Documents\\Job Search\\" + fileName + ".txt"), "UTF-8");
+		writer.println(listing + "\n\n\n");		
+		writer.println(CL);
+		writer.close();
 		
 		
 	}

@@ -2,13 +2,12 @@
 public class letterWriter {
 
 	public static String letterGen(int[] search) {
-		String letter, intro, p1, p2, p3, p4, conc, sig;
+		String letter, p1, p2, p3, p4, conc, sig;
 		
 		for (int i = 0; i > search.length; i++) {
 			System.out.println(search[i]);
 		}
 		
-		intro = "";
 		p1 = parOne();
 		p2 = parTwo();
 		p3 = parThree();
@@ -17,14 +16,14 @@ public class letterWriter {
 		
 		sig = "Yours sincerely, \n\nJon Collins";
 				
-		letter = intro  + "\n\n" + p1 + "\n\n" + p2 + "\n\n" + p3 + "\n\n" + p4 + "\n\n" + conc + "\n\n" + sig;
+		letter = p1 + "\n\n" + p2 + "\n\n" + p3 + "\n\n" + p4 + "\n\n" + conc + "\n\n" + sig;
 				
 		return letter;
 	}
 	
 	static String parOne() {	
 	
-			return "something";	
+			return "Dear Recruiter,\n\n I would like to apply for the [ JOB TITLE ] position with [ COMPANY NAME ], as found on [ WEBSITE ].";	
 		
 	}
 	
@@ -131,3 +130,6 @@ public class letterWriter {
 	
 	
 }
+
+
+
